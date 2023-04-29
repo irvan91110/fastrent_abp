@@ -10,14 +10,10 @@ class AuthLoginView extends GetView<AuthLoginController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('AuthLoginView'),
-        centerTitle: true,
+        title: Text('My App'),
       ),
-      body: const Center(
-        child: Text(
-          'AuthLoginView is working',
-          style: TextStyle(fontSize: 20),
-        ),
+      body: Center(
+        child: Text('Hello, world!'),
       ),
     );
   }
