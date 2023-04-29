@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:fastrent/app/themes/app_colors.dart';
+import 'package:fastrent/app/data/utils/app_colors.dart';
 
 class AppTextStyles {
   static const TextStyle title = TextStyle(
