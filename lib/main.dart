@@ -10,7 +10,7 @@ void main() {
       title: "Application",
       initialRoute: AppPages.INITIAL,
       theme: ThemeData(
-        fontFamily: 'roboto',
+        fontFamily: 'poppins',
       ),
       getPages: AppPages.routes,
     ),
