@@ -16,8 +16,25 @@ class AuthLoginView extends GetView<AuthLoginController> {
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.only(top: 5.0, left: 5.0, bottom: 25),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: IconButton(
+                  icon: const Icon(
+                    IconData(0xe092,
+                        fontFamily: 'MaterialIcons', matchTextDirection: true),
+                    color: Rcolors.primary,
+                    size: 25,
+                  ),
+                  onPressed: () {
+                    Get.back();
+                  },
+                ),
+              ),
+            ),
             const Padding(
-              padding: EdgeInsets.only(top: 150, bottom: 50),
+              padding: EdgeInsets.only(top: 100, bottom: 50),
               child: Center(
                 child: Text(
                   "FastRent",
