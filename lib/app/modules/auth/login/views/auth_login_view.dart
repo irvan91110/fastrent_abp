@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -7,10 +9,17 @@ import 'package:fastrent/app/data/utils/app_text_style.dart';
 import 'package:fastrent/app/data/utils/app_colors.dart';
 import 'package:fastrent/app/routes/app_pages.dart';
 
+import 'package:fastrent/app/data/model/token_model.dart';
+
 class AuthLoginView extends GetView<AuthLoginController> {
-  const AuthLoginView({Key? key}) : super(key: key);
+  AuthLoginView({Key? key}) : super(key: key);
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  final isLoading = false.obs;
+
   @override
   Widget build(BuildContext context) {
+    controller.session_check();
     return Scaffold(
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
@@ -42,22 +51,24 @@ class AuthLoginView extends GetView<AuthLoginController> {
                 ),
               ),
             ),
-            const Padding(
+            Padding(
               //padding: const EdgeInsets.only(left:15.0,right: 15.0,top:0,bottom: 0),
-              padding: EdgeInsets.symmetric(horizontal: 15),
+              padding: const EdgeInsets.symmetric(horizontal: 15),
               child: TextField(
-                decoration: InputDecoration(
+                controller: emailController,
+                decoration: const InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: 'Email',
                     hintText: 'Enter valid email id as abc@gmail.com'),
               ),
             ),
-            const Padding(
+            Padding(
               padding:
                   EdgeInsets.only(left: 15.0, right: 15.0, top: 15, bottom: 0),
               child: TextField(
+                controller: passwordController,
                 obscureText: true,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: 'Password',
                     hintText: 'Enter secure password'),
@@ -68,9 +79,7 @@ class AuthLoginView extends GetView<AuthLoginController> {
               child: Align(
                 alignment: Alignment.centerRight,
                 child: GestureDetector(
-                  onTap: () {
-                    print("lupa password");
-                  },
+                  onTap: () async {},
                   child: const Text(
                     'LUPA PASSWORD ?',
                     textAlign: TextAlign.center,
@@ -87,17 +96,34 @@ class AuthLoginView extends GetView<AuthLoginController> {
               padding: const EdgeInsets.only(
                   left: 15.0, right: 15.0, top: 30, bottom: 0),
               child: Container(
+                height: MediaQuery.of(context).size.height * 0.07,
                 width: MediaQuery.of(context).size.width,
                 decoration: BoxDecoration(
                     color: Rcolors.primaryVariant,
                     borderRadius: BorderRadius.circular(5)),
                 child: TextButton(
-                  onPressed: () {
-                    print("login");
+                  onPressed: () async {
+                    isLoading.value = true;
+                    Future<void> future1 =
+                        Future.delayed(const Duration(seconds: 3), () {
+                      controller.login("username", "password");
+                    });
+                    // set the loading state to true
+
+                    await Future.wait([future1]);
+
+                    isLoading.value = false;
                   },
-                  child: const Text(
-                    'Login',
-                    style: AppTextStyles.button,
+                  child: Obx(
+                    () => isLoading.value
+                        ? const CircularProgressIndicator(
+                            strokeWidth: 1.5,
+                            valueColor:
+                                AlwaysStoppedAnimation<Color>(Colors.white))
+                        : const Text(
+                            'Login',
+                            style: AppTextStyles.button,
+                          ),
                   ),
                 ),
               ),

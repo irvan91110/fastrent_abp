@@ -1,3 +1,4 @@
+import 'package:fastrent/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -14,11 +15,11 @@ class HomeView extends GetView<HomeController> {
         title: const Text('HomeView'),
         centerTitle: true,
       ),
-      body: const Center(
-        child: Text(
-          'HomeView is working',
-          style: AppTextStyles.subtitle,
-        ),
+      body: ElevatedButton(
+        onPressed: () {
+          Get.toNamed(Routes.AUTH_LOGIN);
+        },
+        child: Text("My Button"),
       ),
     );
   }
