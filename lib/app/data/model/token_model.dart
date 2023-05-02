@@ -21,4 +21,9 @@ class TokenModel extends GetxController {
     final token = prefs.getString('Token') ?? '';
     return token;
   }
+
+  Future<void> logout() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.clear();
+  }
 }

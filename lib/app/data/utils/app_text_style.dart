@@ -10,6 +10,13 @@ class AppTextStyles {
     color: Rcolors.primary,
   );
 
+  static const TextStyle topnavbar = TextStyle(
+    fontFamily: 'Poppins',
+    fontWeight: FontWeight.w500, // w500 adalah kode untuk medium
+    fontSize: 25.0,
+    color: Rcolors.surface,
+  );
+
   static const TextStyle subtitle = TextStyle(
     fontSize: 14.0,
     fontFamily: 'Poppins',

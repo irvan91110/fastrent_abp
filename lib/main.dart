@@ -9,6 +9,7 @@ void main() {
     GetMaterialApp(
       title: "Application",
       initialRoute: AppPages.INITIAL,
+      defaultTransition: Transition.noTransition,
       theme: ThemeData(
         fontFamily: 'poppins',
       ),

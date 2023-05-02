@@ -16,7 +16,7 @@ class AuthLoginController extends GetxController {
     bool isLoggedIn = prefs.getBool('isLoggedIn') ?? false;
     print(isLoggedIn);
     if (isLoggedIn) {
-      Get.offAllNamed(Routes.HOME);
+      Get.offAllNamed(Routes.PAGES_DASHBOARD);
     }
   }
 
@@ -37,20 +37,12 @@ class AuthLoginController extends GetxController {
       final responseBody = jsonDecode(response.body);
       if (response.statusCode == 200) {
         settoken.setToken(responseBody['access_token']);
-        Get.offAllNamed(Routes.HOME);
+        Get.offAllNamed(Routes.PAGES_DASHBOARD);
       } else if (response.statusCode == 401) {
         throw Exception('Email atau password salah!');
       }
     } catch (e) {
       print('Error: $e');
     }
-  }
-
-  void logout() {
-    // lakukan proses logout
-    // set _isAuthenticated ke false
-
-    // navigasikan ke halaman login setelah logout
-    Get.offAllNamed('auth/login');
   }
 }

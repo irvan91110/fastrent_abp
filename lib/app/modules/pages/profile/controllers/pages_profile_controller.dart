@@ -1,11 +1,11 @@
+import 'package:fastrent/app/routes/app_pages.dart';
 import 'package:get/get.dart';
 
-class HomeController extends GetxController {
-  //TODO: Implement HomeController
+class PagesProfileController extends GetxController {
+  //TODO: Implement PagesProfileController
 
-  final count = 0.obs;
   @override
-  void onInit() {
+  void onInit() async {
     super.onInit();
   }
 
@@ -18,6 +18,4 @@ class HomeController extends GetxController {
   void onClose() {
     super.onClose();
   }
-
-  void increment() => count.value++;
 }

@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -8,8 +6,6 @@ import '../controllers/auth_login_controller.dart';
 import 'package:fastrent/app/data/utils/app_text_style.dart';
 import 'package:fastrent/app/data/utils/app_colors.dart';
 import 'package:fastrent/app/routes/app_pages.dart';
-
-import 'package:fastrent/app/data/model/token_model.dart';
 
 class AuthLoginView extends GetView<AuthLoginController> {
   AuthLoginView({Key? key}) : super(key: key);
@@ -37,7 +33,7 @@ class AuthLoginView extends GetView<AuthLoginController> {
                     size: 25,
                   ),
                   onPressed: () {
-                    Get.back();
+                    Get.offAllNamed(Routes.PAGES_DASHBOARD);
                   },
                 ),
               ),
@@ -143,7 +139,7 @@ class AuthLoginView extends GetView<AuthLoginController> {
                     ),
                     GestureDetector(
                       onTap: () {
-                        Get.toNamed(Routes.AUTH_REGISTER);
+                        Get.offAllNamed(Routes.AUTH_REGISTER);
                       },
                       child: const Text(
                         'Daftar',
