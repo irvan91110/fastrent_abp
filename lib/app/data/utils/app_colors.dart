@@ -7,7 +7,7 @@ class Rcolors {
   static const secondaryVariant = Color(0xFF018786);
   static const background = Color(0xFFFAFAFA);
   static const surface = Color(0xFFFFFFFF);
-  static const error = Color(0xFFB00020);
+  static const error = Color(0xFFE63946);
   static const onPrimary = Color(0xFFFFFFFF);
   static const onSecondary = Color(0xFF416188);
   static const onBackground = Color(0xFF1D3557);

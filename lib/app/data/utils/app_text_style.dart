@@ -34,4 +34,16 @@ class AppTextStyles {
     fontWeight: FontWeight.normal,
     color: Colors.black,
   );
+  static const TextStyle h1 = TextStyle(
+    fontSize: 32.0,
+    fontFamily: 'Poppins',
+    fontWeight: FontWeight.bold,
+    color: Colors.black,
+  );
+  static const TextStyle h2 = TextStyle(
+    fontSize: 24.0,
+    fontFamily: 'Poppins',
+    fontWeight: FontWeight.bold,
+    color: Colors.black,
+  );
 }

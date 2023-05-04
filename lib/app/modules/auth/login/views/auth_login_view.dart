@@ -53,6 +53,7 @@ class AuthLoginView extends GetView<AuthLoginController> {
               child: TextField(
                 controller: emailController,
                 decoration: const InputDecoration(
+                    errorText: null,
                     border: OutlineInputBorder(),
                     labelText: 'Email',
                     hintText: 'Enter valid email id as abc@gmail.com'),
@@ -65,6 +66,7 @@ class AuthLoginView extends GetView<AuthLoginController> {
                 controller: passwordController,
                 obscureText: true,
                 decoration: const InputDecoration(
+                    errorText: null,
                     border: OutlineInputBorder(),
                     labelText: 'Password',
                     hintText: 'Enter secure password'),

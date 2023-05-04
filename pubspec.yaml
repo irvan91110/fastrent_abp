@@ -14,6 +14,10 @@ dependencies:
   get: 4.6.5
   flutter: 
     sdk: flutter
+  dropdown_button2: ^2.1.0
+  syncfusion_flutter_datepicker: ^21.2.3
+  custom_date_range_picker: ^1.0.10
+  calendar_date_picker2: ^0.5.2
 
 dev_dependencies: 
   flutter_lints: ^2.0.0

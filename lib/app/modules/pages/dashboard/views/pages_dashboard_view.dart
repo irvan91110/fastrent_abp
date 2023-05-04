@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import '../controllers/pages_dashboard_controller.dart';
 import 'package:fastrent/app/modules/pages/history/views/history_view.dart';
 
-import 'package:fastrent/app/modules/pages/home/views/home_view.dart';
+import 'package:fastrent/app/modules/pages/Home/views/pages_home_view.dart';
 
 import 'package:fastrent/app/modules/pages/profile/views/pages_profile_view.dart';
 
@@ -14,7 +14,7 @@ import 'package:fastrent/app/data/utils/app_colors.dart';
 class PagesDashboardView extends GetView<PagesDashboardController> {
   PagesDashboardView({Key? key}) : super(key: key);
   final List<Widget> _pages = [
-    HomeView(),
+    pagesHomeView(),
     HistoryView(),
     PagesProfileView(),
   ];
