@@ -1,4 +1,5 @@
 import 'package:fastrent/app/data/utils/app_colors.dart';
+import 'package:fastrent/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -7,6 +8,7 @@ import 'package:calendar_date_picker2/calendar_date_picker2.dart';
 import 'package:fastrent/app/data/utils/app_text_style.dart';
 import '../controllers/pages_home_controller.dart';
 
+// ignore: camel_case_types, must_be_immutable
 class pagesHomeView extends GetView<PagesHomeController> {
   pagesHomeView({Key? key}) : super(key: key);
 
@@ -17,7 +19,7 @@ class pagesHomeView extends GetView<PagesHomeController> {
     '8',
   ];
   final List<String> transmision = [
-    'manual',
+    'Manual',
     'Matic',
   ];
   bool _isClicked = false;
@@ -59,7 +61,7 @@ class pagesHomeView extends GetView<PagesHomeController> {
                   'Kami memiliki lebih dari 300 mobil  yang tersedia untuk kamu sewa dengan harga termurah  ',
                   style: AppTextStyles.subtitle,
                 )),
-            SizedBox(
+            const SizedBox(
               height: 30,
             ),
             DropdownButtonFormField2(
@@ -77,11 +79,11 @@ class pagesHomeView extends GetView<PagesHomeController> {
               hint: Row(
                 children: [
                   const Icon(
-                    Icons.person,
+                    Icons.group,
                     color: Colors.black45,
                   ),
                   Text(
-                    seat == null ? ' Select Seat' : '${seat} seat',
+                    seat == null ? ' Select Seat' : '$seat seat',
                     style: TextStyle(
                         color: Colors.black.withOpacity(0.5), fontSize: 14),
                   ),
@@ -93,7 +95,7 @@ class pagesHomeView extends GetView<PagesHomeController> {
                         child: Row(
                           children: [
                             const Icon(
-                              Icons.person,
+                              Icons.group,
                               color: Colors.black45,
                             ),
                             Text(
@@ -211,8 +213,8 @@ class pagesHomeView extends GetView<PagesHomeController> {
                       decoration: InputDecoration(
                         hintText: PagesHomeController.startdatex.value,
                         floatingLabelAlignment: FloatingLabelAlignment.center,
-                        prefixIcon: Icon(Icons.calendar_month),
-                        border: OutlineInputBorder(),
+                        prefixIcon: const Icon(Icons.calendar_month),
+                        border: const OutlineInputBorder(),
                         floatingLabelBehavior: _isClicked
                             ? FloatingLabelBehavior.always
                             : FloatingLabelBehavior.never,
@@ -220,6 +222,9 @@ class pagesHomeView extends GetView<PagesHomeController> {
                       ),
                       onTap: () async {
                         _isClicked = true;
+                        kembaliisClicked = false;
+                        dialogCalendarPickerValue = [];
+                        PagesHomeController.startdatex.value = '';
                         final values = await showCalendarDatePicker2Dialog(
                           context: context,
                           config: controller.configx('start'),
@@ -235,9 +240,7 @@ class pagesHomeView extends GetView<PagesHomeController> {
                             'start',
                             values,
                           );
-                          if (PagesHomeController.startdatex.value == null) {
-                            kembaliisClicked = false;
-                          }
+
                           _dialogCalendarPickerValue = values;
                         }
                       },
@@ -253,8 +256,8 @@ class pagesHomeView extends GetView<PagesHomeController> {
                         labelText: 'kembali',
                         hintText: controller.enddatex.value,
                         floatingLabelAlignment: FloatingLabelAlignment.center,
-                        prefixIcon: Icon(Icons.calendar_month),
-                        border: OutlineInputBorder(),
+                        prefixIcon: const Icon(Icons.calendar_month),
+                        border: const OutlineInputBorder(),
                         floatingLabelBehavior: kembaliisClicked
                             ? FloatingLabelBehavior.always
                             : FloatingLabelBehavior.never,
@@ -295,7 +298,9 @@ class pagesHomeView extends GetView<PagesHomeController> {
                     color: Rcolors.primaryVariant,
                     borderRadius: BorderRadius.circular(5)),
                 child: TextButton(
-                  onPressed: () async {},
+                  onPressed: () async {
+                    Get.toNamed(Routes.SEARCH, arguments: {});
+                  },
                   child: const Text(
                     'Seach',
                     style: AppTextStyles.button,

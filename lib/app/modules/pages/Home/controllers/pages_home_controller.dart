@@ -33,6 +33,8 @@ class PagesHomeController extends GetxController {
         final start = values[0].toString().replaceAll(' 00:00:00.000', '');
 
         startdatex.value = start;
+        enddatex.value = '';
+        pagesHomeView().kembaliisClicked = false;
         startdates = DateTime.parse(start);
         return startdates;
       } else if (properties == 'end') {

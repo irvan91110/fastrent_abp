@@ -17,12 +17,12 @@ abstract class Routes {
 
 abstract class _Paths {
   _Paths._();
-  static const AUTH_LOGIN = '/auth/login';
-  static const AUTH_REGISTER = '/auth/register';
+  static const AUTH_LOGIN = '/login';
+  static const AUTH_REGISTER = '/register';
   static const PAGES_DASHBOARD = '/dashboard';
   static const PAGES_HOME = '/pages/home';
-  static const SEARCH = '/order/search';
-  static const CHECKOUT = '/order/checkout';
-  static const ORDER_DETAILS = '/order/order-details';
-  static const CAR_DETAILS = '/order/car-details';
+  static const SEARCH = '/search';
+  static const CHECKOUT = '/checkout';
+  static const ORDER_DETAILS = '/order-details';
+  static const CAR_DETAILS = '/car-details';
 }

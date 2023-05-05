@@ -25,6 +25,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.5.2"
+  carousel_animations:
+    dependency: "direct main"
+    description:
+      name: carousel_animations
+      sha256: "188eee17501a45ac8bba6ae6d246c31ffb75fe916baf6bbcf06f7ba84a3ef925"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.4"
   characters:
     dependency: transitive
     description:
@@ -57,14 +65,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.5"
-  custom_date_range_picker:
-    dependency: "direct main"
-    description:
-      name: custom_date_range_picker
-      sha256: e2814b22af6fd72909f23a86400eec0454417e6955314e2bfb2ffd88019ac345
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.0.10"
   dio:
     dependency: "direct main"
     description:
@@ -160,14 +160,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.0.2"
-  intl:
-    dependency: transitive
-    description:
-      name: intl
-      sha256: "3bc132a9dbce73a7e4a21a17d06e1878839ffbf975568bc875c60537824b0c4d"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.18.1"
   js:
     dependency: transitive
     description:
@@ -365,22 +357,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.2.0"
-  syncfusion_flutter_core:
-    dependency: transitive
-    description:
-      name: syncfusion_flutter_core
-      sha256: c1c65f1fc377ff101ab5f840b9013c5267658e1185abb32df1a23c0aa0508974
-      url: "https://pub.dev"
-    source: hosted
-    version: "21.2.3"
-  syncfusion_flutter_datepicker:
-    dependency: "direct main"
-    description:
-      name: syncfusion_flutter_datepicker
-      sha256: cdc7f12804d609935400262f8d05d9eda8a1f3dbdfef363fb837f09b1f35023d
-      url: "https://pub.dev"
-    source: hosted
-    version: "21.2.3"
   term_glyph:
     dependency: transitive
     description:

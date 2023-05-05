@@ -2,34 +2,32 @@ name: fastrent
 version: 1.0.0+1
 publish_to: none
 description: A new Flutter project.
-environment: 
-  sdk: '>=2.19.0 <3.0.0'
+environment:
+  sdk: ">=2.19.0 <3.0.0"
 
-dependencies: 
+dependencies:
   cupertino_icons: ^1.0.2
   dio: ^5.1.1
   http: ^0.13.5
   shared_preferences: ^2.1.0
   go_router: ^7.0.0
   get: 4.6.5
-  flutter: 
+  flutter:
     sdk: flutter
   dropdown_button2: ^2.1.0
-  syncfusion_flutter_datepicker: ^21.2.3
-  custom_date_range_picker: ^1.0.10
   calendar_date_picker2: ^0.5.2
+  carousel_animations: ^0.0.4
 
-dev_dependencies: 
+dev_dependencies:
   flutter_lints: ^2.0.0
-  flutter_test: 
+  flutter_test:
     sdk: flutter
 
-flutter: 
-  fonts: 
+flutter:
+  fonts:
     - family: Poppins
-      fonts: 
+      fonts:
         - asset: lib/assets/fonts/Poppins-Medium.ttf
         - asset: lib/assets/fonts/Poppins-Light.ttf
         - asset: lib/assets/fonts/Poppins-Regular.ttf
   uses-material-design: true
-
