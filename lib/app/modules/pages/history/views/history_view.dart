@@ -17,11 +17,13 @@ class HistoryView extends GetView<HistoryController> {
         ),
         centerTitle: true,
       ),
-      body: const Center(
-        child: Text(
-          'HistoryView is working',
-          style: TextStyle(fontSize: 20),
-        ),
+      body: Column(
+        children: [
+          Text(
+            'HistoryView is working',
+            style: TextStyle(fontSize: 20),
+          ),
+        ],
       ),
     );
   }

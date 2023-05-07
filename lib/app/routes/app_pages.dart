@@ -25,7 +25,7 @@ class AppPages {
   AppPages._();
 
   //static const INITIAL = Routes.PAGES_DASHBOARD;
-  static const INITIAL = Routes.PAGES_DASHBOARD;
+  static const INITIAL = Routes.CHECKOUT;
   static final routes = [
     GetPage(
       name: _Paths.AUTH_LOGIN,

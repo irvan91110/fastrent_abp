@@ -17,6 +17,7 @@ dependencies:
   dropdown_button2: ^2.1.0
   calendar_date_picker2: ^0.5.2
   carousel_animations: ^0.0.4
+  network_image_to_byte: ^0.0.1
 
 dev_dependencies:
   flutter_lints: ^2.0.0
