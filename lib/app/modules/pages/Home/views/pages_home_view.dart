@@ -299,7 +299,12 @@ class pagesHomeView extends GetView<PagesHomeController> {
                     borderRadius: BorderRadius.circular(5)),
                 child: TextButton(
                   onPressed: () async {
-                    Get.toNamed(Routes.SEARCH, arguments: {});
+                    Get.toNamed(Routes.SEARCH, arguments: {
+                      "sd": PagesHomeController.startdatex.value,
+                      "ed": controller.enddatex.value,
+                      "seat": seat,
+                      "transmisi": transmisions,
+                    });
                   },
                   child: const Text(
                     'Seach',

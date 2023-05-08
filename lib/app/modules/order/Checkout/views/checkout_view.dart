@@ -12,7 +12,6 @@ class CheckoutView extends GetView<CheckoutController> {
 
   @override
   Widget build(BuildContext context) {
-    String? selectedGender;
     return Scaffold(
       backgroundColor: Rcolors.onPrimary,
       appBar: AppBar(
@@ -295,83 +294,72 @@ class CheckoutView extends GetView<CheckoutController> {
                         ),
                       ),
                     ),
-                    Wrap(
-                      children: [
-                        const Padding(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: 10.0, vertical: 15.0),
-                          child: Text(
-                            "Metode Pembayaran",
-                            style: TextStyle(fontWeight: FontWeight.w800),
+                    Obx(
+                      () => Wrap(
+                        children: [
+                          const Padding(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 10.0, vertical: 15.0),
+                            child: Text(
+                              "Metode Pembayaran",
+                              style: TextStyle(fontWeight: FontWeight.w800),
+                            ),
                           ),
-                        ),
-                        Obx(
-                          () => Padding(
+                          Padding(
                             padding:
                                 const EdgeInsets.symmetric(horizontal: 5.0),
-                            child: Card(
-                              child: Column(
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.only(
-                                        left: 10.0,
-                                        right: 10,
-                                        top: 5,
-                                        bottom: 5),
-                                    child: Wrap(
-                                      children: [
-                                        PaymentMethod(
-                                          IconUrl:
-                                              "https://theme.zdassets.com/theme_assets/1379487/2cb35fe96fa1191f49c2b769b50cf8b546fff65e.png",
-                                          Title: 'ovo',
-                                          value: 'ovo',
-                                          GroupValue:
-                                              controller.selectedPayment.value,
-                                          onChanged: (value) => controller
-                                              .updateSelectedPayment(value!),
-                                        ),
-                                        Divider(),
-                                        PaymentMethod(
-                                          IconUrl:
-                                              "https://theme.zdassets.com/theme_assets/1379487/2cb35fe96fa1191f49c2b769b50cf8b546fff65e.png",
-                                          Title: 'ovox',
-                                          value: 'ovox',
-                                          GroupValue:
-                                              controller.selectedPayment.value,
-                                          onChanged: (value) => controller
-                                              .updateSelectedPayment(value!),
-                                        ),
-                                        Divider(),
-                                        PaymentMethod(
-                                          IconUrl:
-                                              "https://theme.zdassets.com/theme_assets/1379487/2cb35fe96fa1191f49c2b769b50cf8b546fff65e.png",
-                                          Title: 'ovoz',
-                                          value: 'ovoz',
-                                          GroupValue:
-                                              controller.selectedPayment.value,
-                                          onChanged: (value) => controller
-                                              .updateSelectedPayment(value!),
-                                        ),
-                                        Divider(),
-                                        PaymentMethod(
-                                          IconUrl:
-                                              "https://theme.zdassets.com/theme_assets/1379487/2cb35fe96fa1191f49c2b769b50cf8b546fff65e.png",
-                                          Title: 'ovoy',
-                                          value: 'ovoy',
-                                          GroupValue:
-                                              controller.selectedPayment.value,
-                                          onChanged: (value) => controller
-                                              .updateSelectedPayment(value!),
-                                        ),
-                                      ],
+                            child: Container(
+                              width: MediaQuery.of(context).size.width,
+                              child: Card(
+                                child: Column(
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.only(
+                                          left: 10.0,
+                                          right: 10,
+                                          top: 5,
+                                          bottom: 5),
+                                      child: Wrap(
+                                        children: [
+                                          for (int i = 0;
+                                              i <
+                                                  controller
+                                                      .paymentMethod.length;
+                                              i++)
+                                            Wrap(
+                                              children: [
+                                                PaymentMethod(
+                                                  IconUrl: controller
+                                                          .paymentMethod[i]
+                                                      ['icon_url'],
+                                                  Title: controller
+                                                      .paymentMethod[i]['name'],
+                                                  value: controller
+                                                      .paymentMethod[i]['code'],
+                                                  GroupValue: controller
+                                                      .selectedPayment.value,
+                                                  onChanged: (value) =>
+                                                      controller
+                                                          .updateSelectedPayment(
+                                                              value!),
+                                                ),
+                                                if (i !=
+                                                    controller.paymentMethod
+                                                            .length -
+                                                        1)
+                                                  const Divider(),
+                                              ],
+                                            ),
+                                        ],
+                                      ),
                                     ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(
@@ -383,7 +371,9 @@ class CheckoutView extends GetView<CheckoutController> {
                             color: Rcolors.primaryVariant,
                             borderRadius: BorderRadius.circular(5)),
                         child: TextButton(
-                          onPressed: () async {},
+                          onPressed: () async {
+                            controller.sentData();
+                          },
                           child: const Text(
                             'Continue',
                             style: TextStyle(color: Colors.white),

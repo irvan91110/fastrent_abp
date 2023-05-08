@@ -6,19 +6,25 @@ import 'package:get/get.dart';
 class CustomCardWidget extends StatelessWidget {
   final String Nama_mobil;
   final String transmisi;
-  final int seat;
+  final String seat;
   final String imageUrl;
+  final String harga;
+
+  final Function() onChanged;
 
   CustomCardWidget({
     required this.Nama_mobil,
     required this.transmisi,
     required this.seat,
     required this.imageUrl,
+    required this.harga,
+    required this.onChanged,
   });
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
+        onTap: onChanged,
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10),
           child: SizedBox(
@@ -51,7 +57,7 @@ class CustomCardWidget extends StatelessWidget {
                               Icons.airline_seat_recline_normal,
                               color: Colors.black.withOpacity(0.5),
                             ),
-                            Text("${seat} orang"),
+                            Text("$seat orang"),
                             Container(width: 5, color: Colors.transparent),
                             Icon(
                               Icons.electric_car,
@@ -70,13 +76,13 @@ class CustomCardWidget extends StatelessWidget {
                         alignment: Alignment.bottomRight,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.end,
-                          children: const [
-                            Text("From"),
+                          children: [
+                            const Text("From"),
                             Padding(
                               padding: EdgeInsets.only(left: 5.0, bottom: 3.0),
                               child: Text(
-                                "Rp 239.000/day",
-                                style: TextStyle(
+                                "Rp $harga /day",
+                                style: const TextStyle(
                                   color: Colors.red,
                                   fontSize: 16,
                                 ),
@@ -89,9 +95,6 @@ class CustomCardWidget extends StatelessWidget {
               ),
             ),
           ),
-        ),
-        onTap: () {
-          Get.toNamed(Routes.CAR_DETAILS);
-        });
+        ));
   }
 }
