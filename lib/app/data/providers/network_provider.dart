@@ -6,7 +6,7 @@ import 'dart:async';
 import 'package:http/http.dart' as http;
 
 class Networkprovider extends GetConnect {
-  late String baseURL = "http://192.168.1.2:8000/api";
+  late String baseURL = "http://192.168.1.13:8000/api";
 
   Networkprovider();
 
@@ -15,10 +15,9 @@ class Networkprovider extends GetConnect {
       var response = await http.post(
         Uri.parse('$baseURL/$endpoint'),
         headers: headers,
-        //jsonEncode(<String, String>{'name': "irvan", 'last': "ardiansyah"})
         body: dataBody,
       );
-      return (response);
+      return response;
     } catch (e) {
       // Tangani kesalahan di sini
       print('Error: $e');

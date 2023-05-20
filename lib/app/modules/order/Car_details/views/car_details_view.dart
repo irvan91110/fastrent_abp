@@ -58,7 +58,12 @@ class CarDetailsView extends GetView<CarDetailsController> {
                           ),
                           child: TextButton(
                             onPressed: () {
-                              Get.toNamed(Routes.CHECKOUT);
+                              Get.toNamed(Routes.CHECKOUT, arguments: {
+                                "id": controller.id,
+                                "sd": controller.sd,
+                                "ed": controller.ed,
+                                "Total": controller.daysTotal.value
+                              });
                             },
                             child: const Text(
                               'continue',
@@ -85,7 +90,7 @@ class CarDetailsView extends GetView<CarDetailsController> {
               children: [
                 const Text('Fastrent'),
                 Text(
-                  '${controller.edFormat} - ${controller.sdFormat}',
+                  '${controller.sdFormat} - ${controller.edFormat}',
                   style: TextStyle(fontSize: 12, color: Colors.white),
                 ),
               ],

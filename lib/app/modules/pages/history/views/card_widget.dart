@@ -1,97 +1,95 @@
-import 'package:fastrent/app/routes/app_pages.dart';
+import 'package:fastrent/app/data/utils/app_colors.dart';
 import 'package:flutter/material.dart';
-
-import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 
 class CustomCardWidget extends StatelessWidget {
-  final String Nama_mobil;
-  final String transmisi;
-  final int seat;
-  final String imageUrl;
+  final String bookid;
+  final String price;
+  final String start;
+  final String end;
+  final String status;
+  final Function() onChanged;
 
   CustomCardWidget({
-    required this.Nama_mobil,
-    required this.transmisi,
-    required this.seat,
-    required this.imageUrl,
+    required this.bookid,
+    required this.price,
+    required this.start,
+    required this.end,
+    required this.status,
+    required this.onChanged,
   });
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10),
-          child: SizedBox(
-            width: MediaQuery.of(context).size.width,
-            child: Card(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 15.0, top: 15),
-                    child: Text(Nama_mobil),
-                  ),
-                  Row(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(left: 30.0),
-                        child: Image.network(
-                          imageUrl,
-                          width: 100,
-                          height: 100,
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(bottom: 20.0),
-                        child: Wrap(
-                          children: [
-                            Container(width: 10, color: Colors.transparent),
-                            Icon(
-                              Icons.airline_seat_recline_normal,
-                              color: Colors.black.withOpacity(0.5),
-                            ),
-                            Text("${seat} orang"),
-                            Container(width: 5, color: Colors.transparent),
-                            Icon(
-                              Icons.electric_car,
-                              color: Colors.black.withOpacity(0.5),
-                            ),
-                            Container(width: 5, color: Colors.transparent),
-                            Text(transmisi),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(right: 15.0, bottom: 5),
-                    child: Align(
-                        alignment: Alignment.bottomRight,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: const [
-                            Text("From"),
-                            Padding(
-                              padding: EdgeInsets.only(left: 5.0, bottom: 3.0),
-                              child: Text(
-                                "Rp 239.000/day",
-                                style: TextStyle(
-                                  color: Colors.red,
-                                  fontSize: 16,
-                                ),
-                              ),
-                            ),
-                          ],
-                        )),
-                  ),
-                ],
-              ),
+      onTap: onChanged,
+      child: SizedBox(
+        width: MediaQuery.of(context).size.width,
+        child: Card(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
+            side: BorderSide(
+              color: Colors.grey.shade400,
+              width: 1,
             ),
           ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(top: 10.0, left: 10, right: 10),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        Text("Booking ID "),
+                        Text(
+                          bookid,
+                          style: TextStyle(color: Rcolors.primary),
+                        ),
+                      ],
+                    ),
+                    Text("Rp $price.00"),
+                  ],
+                ),
+              ),
+              Container(
+                color: Color.fromARGB(255, 222, 220, 220),
+                width: MediaQuery.of(context).size.width,
+                child: Padding(
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 5, horizontal: 7),
+                  child: Row(
+                    children: [
+                      Text(DateFormat.yMMMEd()
+                          .format(DateTime.parse(start))
+                          .toString()),
+                      const SizedBox(
+                        width: 5,
+                      ),
+                      const Text("-"),
+                      const SizedBox(
+                        width: 5,
+                      ),
+                      Text(DateFormat.yMMMEd()
+                          .format(DateTime.parse(end))
+                          .toString()),
+                    ],
+                  ),
+                ),
+              ),
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                child: Text(status),
+              ),
+            ],
+          ),
         ),
-        onTap: () {
-          Get.toNamed(Routes.CAR_DETAILS);
-        });
+      ),
+    );
   }
 }

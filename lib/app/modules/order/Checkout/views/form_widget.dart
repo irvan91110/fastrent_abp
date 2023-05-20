@@ -65,8 +65,8 @@ class MyDialog {
               ),
               TextButton(
                   onPressed: () {
-                    controller.updateSelectedGender(value);
-                    controller.UpdateInformation(
+                    controller.updateSelected(value);
+                    controller.updateInformation(
                         name.text, email.text, phone.text);
                     Get.back();
                   },

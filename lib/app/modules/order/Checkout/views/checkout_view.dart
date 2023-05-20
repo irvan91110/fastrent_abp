@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 
 import '../controllers/checkout_controller.dart';
 import '../views/form_widget.dart';
-import '../views/payment_method_widget.dart';
+import 'payment_widget.dart';
 
 class CheckoutView extends GetView<CheckoutController> {
   const CheckoutView({Key? key}) : super(key: key);
@@ -55,56 +55,66 @@ class CheckoutView extends GetView<CheckoutController> {
                               Padding(
                                 padding: const EdgeInsets.only(
                                     bottom: 15, left: 10.0),
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Row(
-                                      children: [
-                                        const Icon(
-                                          Icons.car_rental,
-                                          size: 17,
-                                          color: Color(0xff338A94),
-                                        ),
-                                        const SizedBox(
-                                          width: 5,
-                                        ),
-                                        Text(
-                                          'Sat,6 may - thu, 18 may',
-                                          style: TextStyle(
+                                child: Obx(
+                                  () => Column(
+                                    children: controller.cardList
+                                        .map<Widget>((details) {
+                                      return Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Row(
+                                            children: [
+                                              const Icon(
+                                                Icons.car_rental,
+                                                size: 17,
+                                                color: Color(0xff338A94),
+                                              ),
+                                              const SizedBox(
+                                                width: 5,
+                                              ),
+                                              Text(
+                                                '${controller.sdFormat.value} - ${controller.edFormat.value}',
+                                                style: TextStyle(
+                                                    color: Rcolors.onSurface
+                                                        .withOpacity(0.7),
+                                                    fontWeight:
+                                                        FontWeight.w500),
+                                              ),
+                                            ],
+                                          ),
+                                          const SizedBox(
+                                            height: 7,
+                                          ),
+                                          Text(
+                                            details.name!,
+                                            style: TextStyle(
+                                                color: Rcolors.onSurface
+                                                    .withOpacity(0.8),
+                                                fontWeight: FontWeight.w500,
+                                                fontSize: 17),
+                                          ),
+                                          Text(
+                                            'Total : Rp ${(details.price! * controller.daysTotal)}0',
+                                            style: TextStyle(
                                               color: Rcolors.onSurface
-                                                  .withOpacity(0.7),
-                                              fontWeight: FontWeight.w500),
-                                        ),
-                                      ],
-                                    ),
-                                    const SizedBox(
-                                      height: 7,
-                                    ),
-                                    Text(
-                                      'Daihatsu xenia',
-                                      style: TextStyle(
-                                          color: Rcolors.onSurface
-                                              .withOpacity(0.8),
-                                          fontWeight: FontWeight.w500,
-                                          fontSize: 17),
-                                    ),
-                                    Text(
-                                      'By Fastrent bandung',
-                                      style: TextStyle(
-                                        color:
-                                            Rcolors.onSurface.withOpacity(0.5),
-                                        fontWeight: FontWeight.w500,
-                                      ),
-                                    ),
-                                    Text(
-                                      'Rental Duration : 13 days * Pickup at 15:30',
-                                      style: TextStyle(
-                                          color: Rcolors.onSurface
-                                              .withOpacity(0.5),
-                                          fontWeight: FontWeight.w500),
-                                    ),
-                                  ],
+                                                  .withOpacity(0.5),
+                                              fontWeight: FontWeight.w500,
+                                            ),
+                                          ),
+                                          Text(
+                                            'Rental Duration : ${controller.daysTotal} days * Pickup at 08:30 AM',
+                                            style: TextStyle(
+                                                color: Rcolors.onSurface
+                                                    .withOpacity(0.5),
+                                                fontWeight: FontWeight.w500),
+                                          ),
+                                        ],
+                                      );
+                                    }).toList(),
+                                  ),
                                 ),
                               ),
                               Container(
@@ -221,13 +231,15 @@ class CheckoutView extends GetView<CheckoutController> {
                                   children: [
                                     Obx(
                                       () => Text(
-                                        controller.fullName.value,
+                                        controller.user['name'] ?? "Name",
                                       ),
                                     ),
                                     Row(
                                       children: [
                                         Obx(
-                                          () => Text(controller.email.value,
+                                          () => Text(
+                                              controller.user['email'] ??
+                                                  "email",
                                               style: TextStyle(
                                                   color: Rcolors.onSurface
                                                       .withOpacity(0.5))),
@@ -240,7 +252,8 @@ class CheckoutView extends GetView<CheckoutController> {
                                         ),
                                         Obx(
                                           () => Text(
-                                              "+62 ${controller.phone.value}",
+                                              controller.user['phone'] ??
+                                                  "phone",
                                               style: TextStyle(
                                                   color: Rcolors.onSurface
                                                       .withOpacity(0.5))),
@@ -265,7 +278,7 @@ class CheckoutView extends GetView<CheckoutController> {
                                               groupValue: controller
                                                   .selectedGender.value,
                                               onChanged: (value) => controller
-                                                  .updateSelectedGender(value!),
+                                                  .updateSelected(value!),
                                             ),
                                             const Text(
                                                 "I'm Booking for myself"),
@@ -274,7 +287,7 @@ class CheckoutView extends GetView<CheckoutController> {
                                         Row(
                                           children: <Widget>[
                                             Radio(
-                                              value: 'female',
+                                              value: 'guest',
                                               groupValue: controller
                                                   .selectedGender.value,
                                               onChanged: (value) {

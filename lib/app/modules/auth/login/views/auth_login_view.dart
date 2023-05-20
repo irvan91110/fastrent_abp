@@ -130,10 +130,7 @@ class AuthLoginView extends GetView<AuthLoginController> {
               child: Padding(
                 padding: const EdgeInsets.symmetric(vertical: 5.0),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment
-                      .center, //Center Row contents horizontally,
-
-                  // ignore: prefer_const_literals_to_create_immutables
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     const Text(
                       'Belum punya akun? ',
