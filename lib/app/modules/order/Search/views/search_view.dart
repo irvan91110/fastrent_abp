@@ -9,7 +9,7 @@ import '../controllers/search_controller.dart';
 
 import '../views/card_widget.dart';
 
-class SearchView extends GetView<SearchController> {
+class SearchView extends GetView<SearchControllerx> {
   SearchView({Key? key}) : super(key: key);
 
   @override

@@ -57,13 +57,17 @@ class CarDetailsView extends GetView<CarDetailsController> {
                             color: Rcolors.primaryVariant,
                           ),
                           child: TextButton(
-                            onPressed: () {
-                              Get.toNamed(Routes.CHECKOUT, arguments: {
-                                "id": controller.id,
-                                "sd": controller.sd,
-                                "ed": controller.ed,
-                                "Total": controller.daysTotal.value
-                              });
+                            onPressed: () async {
+                              if (!(await controller.logincheck())) {
+                                Get.toNamed(Routes.AUTH_LOGIN);
+                              } else {
+                                Get.toNamed(Routes.CHECKOUT, arguments: {
+                                  "id": controller.id,
+                                  "sd": controller.sd,
+                                  "ed": controller.ed,
+                                  "Total": controller.daysTotal.value
+                                });
+                              }
                             },
                             child: const Text(
                               'continue',

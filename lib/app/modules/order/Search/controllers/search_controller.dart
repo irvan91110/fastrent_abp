@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:get/get.dart';
 import 'package:fastrent/app/data/providers/Network_provider.dart';
 
-class SearchController extends GetxController {
+class SearchControllerx extends GetxController {
   final Networkprovider apiService = Get.put(Networkprovider());
 
   var asdasd = ''.obs;

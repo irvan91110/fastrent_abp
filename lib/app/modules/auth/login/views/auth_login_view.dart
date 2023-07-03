@@ -39,14 +39,19 @@ class AuthLoginView extends GetView<AuthLoginController> {
               ),
             ),
             const Padding(
-              padding: EdgeInsets.only(top: 100, bottom: 50),
-              child: Center(
-                child: Text(
-                  "FastRent",
-                  style: AppTextStyles.logo,
-                ),
+              padding: EdgeInsets.only(top: 100, bottom: 30),
+              child: Text(
+                "FastRent",
+                style: AppTextStyles.logo,
               ),
             ),
+            Obx(() => Padding(
+                  padding: const EdgeInsets.only(top: 20.0, bottom: 15),
+                  child: Text(
+                    controller.errorCode.value,
+                    style: TextStyle(color: Rcolors.error),
+                  ),
+                )),
             Padding(
               //padding: const EdgeInsets.only(left:15.0,right: 15.0,top:0,bottom: 0),
               padding: const EdgeInsets.symmetric(horizontal: 15),
@@ -104,7 +109,8 @@ class AuthLoginView extends GetView<AuthLoginController> {
                     isLoading.value = true;
                     Future<void> future1 =
                         Future.delayed(const Duration(seconds: 3), () {
-                      controller.login("username", "password");
+                      controller.login(
+                          emailController.text, passwordController.text);
                     });
                     // set the loading state to true
 

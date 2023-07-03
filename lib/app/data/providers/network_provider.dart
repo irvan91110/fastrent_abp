@@ -6,7 +6,7 @@ import 'dart:async';
 import 'package:http/http.dart' as http;
 
 class Networkprovider extends GetConnect {
-  late String baseURL = "http://192.168.1.13:8000/api";
+  late String baseURL = "http://192.168.1.14:8000/api";
 
   Networkprovider();
 

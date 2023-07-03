@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:fastrent/app/data/model/token_model.dart';
 import 'package:fastrent/app/routes/app_pages.dart';
 import 'package:get/get.dart';
 import 'package:fastrent/app/data/providers/Network_provider.dart';
@@ -23,11 +24,11 @@ class CheckoutController extends GetxController {
 
   var sdFormat = ''.obs;
   var edFormat = ''.obs;
-  String token =
-      "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE2ODM2MTUxMTIsImV4cCI6NTQ2NzkzNTExMiwibmJmIjoxNjgzNjE1MTEyLCJqdGkiOiJQZHhBYjBsNndwTkdKemtuIiwic3ViIjoiNSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.xSaUD8ybbOmhVVF1M4Qm5lsR9RdFeHme1EAW7x3WWC0";
 
   @override
   void onInit() async {
+    TokenModel token = TokenModel();
+
     DateTime startDate = DateTime.parse(sd);
     DateTime endDate = DateTime.parse(ed);
     sdFormat.value = DateFormat.yMMMEd().format(startDate).toString();
@@ -40,7 +41,7 @@ class CheckoutController extends GetxController {
     //get user
     userx = await apiService.dataget('auth/get_user', <String, String>{
       'Accept': 'application/json',
-      "authorization": "Bearer $token"
+      'authorization': 'Bearer ${await token.getToken()}'
     });
     //get car details
 
@@ -77,6 +78,7 @@ class CheckoutController extends GetxController {
 
   //getter
   void sentData() async {
+    TokenModel token = TokenModel();
     String fullName = user['name'];
 
     var names = fullName.split(' ');
@@ -84,7 +86,7 @@ class CheckoutController extends GetxController {
     var submit = await apiService
         .datapost('${id.toString()}/post_checkout', <String, String>{
       'Accept': 'application/json',
-      "Authorization": "Bearer $token"
+      'authorization': 'Bearer ${await token.getToken()}'
     }, <String, String>{
       'start_date': sd.toString(),
       'end_date': ed.toString(),

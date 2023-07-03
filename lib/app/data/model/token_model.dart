@@ -19,6 +19,7 @@ class TokenModel extends GetxController {
   Future<String> getToken() async {
     final prefs = await SharedPreferences.getInstance();
     final token = prefs.getString('Token') ?? '';
+
     return token;
   }
 

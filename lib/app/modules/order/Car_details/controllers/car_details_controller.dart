@@ -1,9 +1,12 @@
 import 'dart:convert';
+import 'dart:ffi';
 
+import 'package:fastrent/app/routes/app_pages.dart';
 import 'package:get/get.dart';
 import 'package:fastrent/app/data/providers/Network_provider.dart';
 import 'package:fastrent/app/data/model/Productmodel.dart';
 import 'package:intl/intl.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class CarDetailsController extends GetxController {
   final Networkprovider apiService = Get.put(Networkprovider());
@@ -35,5 +38,14 @@ class CarDetailsController extends GetxController {
         .toList();
 
     super.onInit();
+  }
+
+  Future<bool> logincheck() async {
+    final prefs = await SharedPreferences.getInstance();
+    bool isLoggedIn = prefs.getBool('isLoggedIn') ?? false;
+    if (!isLoggedIn) {
+      return false;
+    }
+    return true;
   }
 }

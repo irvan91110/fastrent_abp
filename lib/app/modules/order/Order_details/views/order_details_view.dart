@@ -92,8 +92,8 @@ class OrderDetailsView extends GetView<OrderDetailsController> {
                                       'Bayar sekarang',
                                       style: TextStyle(color: Colors.white),
                                     ),
-                                    onTap: () => launchUrl(Uri.parse(
-                                        controller.payment_method['pay_url']))),
+                                    onTap: () => launchUrl(Uri.parse(controller
+                                        .payment_method['checkout_url']))),
                               ),
                             ),
                           ),
